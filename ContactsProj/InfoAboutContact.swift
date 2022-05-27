@@ -18,6 +18,8 @@ struct InfoAboutContact: View {
     var barTitle: String
     var contact: Contact
     
+    @FocusState private var focusedField: Field?
+    
     var body: some View {
         ZStack {
             ScrollView {
@@ -25,6 +27,10 @@ struct InfoAboutContact: View {
                     ImageButton(data: $photo,uiimage: UIImage(data: photo ?? Data()), contact: contact)
                         .padding(.top, 40)
                     TextFieldView(textInTF: $number, placeHolder: "Phone numberr", name: "Phone")
+                        .focused($focusedField, equals: .phone)
+                        .simultaneousGesture(TapGesture().onEnded {
+                            focusedField = .phone
+                        })
                         .padding(.top, 80)
                         .overlay(Button {
                             let callPhone = "tel://"
@@ -37,7 +43,15 @@ struct InfoAboutContact: View {
                             .position(x: 270, y: 97)
                         )
                     TextFieldView(textInTF: $name, placeHolder: "Contact's name", name: "Name")
+                        .focused($focusedField, equals: .name)
+                        .simultaneousGesture(TapGesture().onEnded {
+                            focusedField = .name
+                        })
                     TextFieldView(textInTF: $secondName, placeHolder: "Contact's last name", name: "Last name")
+                        .focused($focusedField, equals: .secondName)
+                        .simultaneousGesture(TapGesture().onEnded {
+                            focusedField = .secondName
+                        })
                     Spacer()
                 }
                 .frame(
@@ -54,7 +68,9 @@ struct InfoAboutContact: View {
                 .navigationTitle(barTitle)
             }
         }
-        
+        .onTapGesture {
+            focusedField = nil
+        }
     }
     private func saveContact() {
         contact.name = name
@@ -65,7 +81,7 @@ struct InfoAboutContact: View {
         do {
             try context.save()
         } catch {
-            print("Can't do that")
+            print(error.localizedDescription)
         }
     }
 }

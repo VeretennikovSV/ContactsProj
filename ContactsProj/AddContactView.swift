@@ -25,7 +25,6 @@ struct AddContactView: View {
     @State private var phone = ""
     @State private var isAlertPresented = false
     
-    @FocusState private var focused: Bool
     @FocusState private var focusedField: Field?
     
     
@@ -81,10 +80,8 @@ struct AddContactView: View {
             default: break
             }
         }
-        .ignoresSafeArea(.keyboard) // Cмещение нормальное ставить
-        .focused($focused) //Фокус клавы снимать
         .onTapGesture {
-            focused = false
+            focusedField = nil
         }
     }
     

@@ -11,14 +11,17 @@ struct ImageButton: View {
     
     @Environment(\.managedObjectContext) var context
     
-    @State private var image: Image?
     @Binding var data: Data?
-    @State var uiimage: UIImage?
+    
+    @State private var image: Image?
     @State private var focusedImaagePicker = false
+    
+    @State var uiimage: UIImage?
+    
     var contact: Contact
     
     func save() {
-        let pickedImage = uiimage?.jpegData(compressionQuality: 0.8)
+        let pickedImage = uiimage?.jpegData(compressionQuality: 1)
         
         data = pickedImage
         contact.picture = data
@@ -26,7 +29,7 @@ struct ImageButton: View {
         do {
             try context.save()
         } catch {
-            print(2)
+            print(error.localizedDescription)
         }
     }
     
@@ -52,7 +55,7 @@ struct ImageButton: View {
                         .resizable()
                         .frame(width: 175, height: 175)
                         .cornerRadius(87)
-                        .aspectRatio(0.6, contentMode: .fit)
+                        .scaledToFit()
                 } else {
                     Image(systemName: "questionmark")
                         .resizable()

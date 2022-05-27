@@ -22,7 +22,7 @@
 		09068E31283BF3E8004786BD /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09068E25283BF3E8004786BD /* Modifiers.swift */; };
 		09068E32283BF3E8004786BD /* InfoAboutContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09068E26283BF3E8004786BD /* InfoAboutContact.swift */; };
 		09068E33283BF3E8004786BD /* CellInTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09068E27283BF3E8004786BD /* CellInTable.swift */; };
-		09BFE61A283FDE8400F79524 /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BFE619283FDE8400F79524 /* Loader.swift */; };
+		09BFE61A283FDE8400F79524 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BFE619283FDE8400F79524 /* ImagePicker.swift */; };
 		09BFE620283FFED500F79524 /* ImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BFE61F283FFED500F79524 /* ImageButton.swift */; };
 		09BFE62728400AF800F79524 /* Contact+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BFE62528400AF800F79524 /* Contact+CoreDataClass.swift */; };
 		09BFE62828400AF800F79524 /* Contact+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BFE62628400AF800F79524 /* Contact+CoreDataProperties.swift */; };
@@ -47,7 +47,7 @@
 		09068E25283BF3E8004786BD /* Modifiers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
 		09068E26283BF3E8004786BD /* InfoAboutContact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoAboutContact.swift; sourceTree = "<group>"; };
 		09068E27283BF3E8004786BD /* CellInTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellInTable.swift; sourceTree = "<group>"; };
-		09BFE619283FDE8400F79524 /* Loader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
+		09BFE619283FDE8400F79524 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		09BFE61F283FFED500F79524 /* ImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageButton.swift; sourceTree = "<group>"; };
 		09BFE62528400AF800F79524 /* Contact+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Contact+CoreDataClass.swift"; sourceTree = "<group>"; };
 		09BFE62628400AF800F79524 /* Contact+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Contact+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -92,7 +92,7 @@
 				09068E1E283BF3E7004786BD /* ContactsDemo.swift */,
 				09068E26283BF3E8004786BD /* InfoAboutContact.swift */,
 				09BFE61F283FFED500F79524 /* ImageButton.swift */,
-				09BFE619283FDE8400F79524 /* Loader.swift */,
+				09BFE619283FDE8400F79524 /* ImagePicker.swift */,
 				09DBA58F283CFE6B00AA8255 /* AddContactView.swift */,
 				09DBA591283CFF3300AA8255 /* TextFieldView.swift */,
 				09068E24283BF3E8004786BD /* ContactsManager.swift */,
@@ -200,7 +200,7 @@
 				09068E16283BF2AE004786BD /* ContactsProj.xcdatamodeld in Sources */,
 				09BFE620283FFED500F79524 /* ImageButton.swift in Sources */,
 				09068E2E283BF3E8004786BD /* StarterView.swift in Sources */,
-				09BFE61A283FDE8400F79524 /* Loader.swift in Sources */,
+				09BFE61A283FDE8400F79524 /* ImagePicker.swift in Sources */,
 				09BFE62728400AF800F79524 /* Contact+CoreDataClass.swift in Sources */,
 				09068E28283BF3E8004786BD /* ContactListApp.swift in Sources */,
 				09068E33283BF3E8004786BD /* CellInTable.swift in Sources */,

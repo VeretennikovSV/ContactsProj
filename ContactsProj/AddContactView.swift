@@ -19,10 +19,12 @@ struct AddContactView: View {
     @Environment(\.managedObjectContext) private var context
     
     @Binding var isPresented: Bool
+    
     @State private var name = ""
     @State private var secondName = ""
     @State private var phone = ""
     @State private var isAlertPresented = false
+    
     @FocusState private var focused: Bool
     @FocusState private var focusedField: Field?
     
@@ -31,35 +33,33 @@ struct AddContactView: View {
         ZStack {
             Color.white
             VStack {
-                VStack {
-                    TextFieldView(textInTF: $phone, placeHolder: "Contact number", name: "Number")
-                        .focused($focusedField, equals: .phone)
-                        .submitLabel(.next)
-                        .simultaneousGesture(TapGesture().onEnded {
-                            focusedField = .phone
-                        })
-                    TextFieldView(textInTF: $name,placeHolder: "Contact name", name: "Name")
-                        .focused($focusedField, equals: .name)
-                        .submitLabel(.next)
-                        .simultaneousGesture(TapGesture().onEnded {
-                            focusedField = .name
-                        })
-                    TextFieldView(textInTF: $secondName, placeHolder: "Contact last name", name: "Last name")
-                        .focused($focusedField, equals: .secondName)
-                        .submitLabel(.done)
-                        .simultaneousGesture(TapGesture().onEnded {
-                            focusedField = .secondName
-                        })
-                }
-                .frame(width: 300, height: 150)
-                .padding()
-                .overlay(
-                    RoundedRectangle(cornerRadius: 4)
-                        .stroke(.gray, lineWidth: 0.4)
-                        .shadow(color: .black, radius: 1)
-                )
-                .padding(.bottom, 200)
-                
+                ZStack {
+                    Rectangle()
+                        .cornerRadius(10)
+                        .foregroundColor(.white)
+                        .frame(width: 300, height: 150)
+                        .addShadow()
+                    VStack {
+                        TextFieldView(textInTF: $phone, placeHolder: "Contact number", name: "Number")
+                            .focused($focusedField, equals: .phone)
+                            .submitLabel(.next)
+                            .simultaneousGesture(TapGesture().onEnded {
+                                focusedField = .phone
+                            })
+                        TextFieldView(textInTF: $name,placeHolder: "Contact name", name: "Name")
+                            .focused($focusedField, equals: .name)
+                            .submitLabel(.next)
+                            .simultaneousGesture(TapGesture().onEnded {
+                                focusedField = .name
+                            })
+                        TextFieldView(textInTF: $secondName, placeHolder: "Contact last name", name: "Last name")
+                            .focused($focusedField, equals: .secondName)
+                            .submitLabel(.done)
+                            .simultaneousGesture(TapGesture().onEnded {
+                                focusedField = .secondName
+                            })
+                    }
+                }.padding(.bottom, 200)
                 Buttons(
                     name: $name,
                     secondName: $secondName,
@@ -136,7 +136,7 @@ struct Buttons: View {
                 isPresented.toggle()
             } label: {
                 Text("Cancel")
-                    .frame(width: 100)
+                    .frame(width: 100, alignment: .leading)
                     .foregroundColor(.red)
             }
             .padding(.leading, 40)
@@ -147,7 +147,7 @@ struct Buttons: View {
                 newContactWith(name, secondName, number)
             } label: {
                 Text("Add contact").bold()
-                    .frame(width: 100)
+                    .frame(width: 100, alignment: .trailing)
             }
             .padding(.trailing, 40)
         }

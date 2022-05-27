@@ -19,3 +19,19 @@ struct ButtonMod: ViewModifier {
             .background(color)
     }
 }
+
+struct ShadowMod: ViewModifier, ShapeStyle {
+    func body(content: Content) -> some View {
+        content
+            .shadow(color: .black.opacity(0.3), radius: 3, x: -4, y: -4)
+            .shadow(color: .gray.opacity(0.4), radius: 7, x: 7, y: 7)
+    }
+}
+
+extension View {
+    
+    func addShadow() -> some View {
+        modifier(ShadowMod())
+    }
+    
+}

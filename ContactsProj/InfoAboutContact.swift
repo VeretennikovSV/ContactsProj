@@ -19,38 +19,43 @@ struct InfoAboutContact: View {
     var contact: Contact
     
     var body: some View {
-        ScrollView {
-            VStack {
-                ImageButton(data: $photo,uiimage: UIImage(data: photo ?? Data()), contact: contact)
-                    .padding(.top, 40)
-                TextFieldView(textInTF: $number, placeHolder: "Phone numberr", name: "Phone")
-                    .padding(.top, 80)
-                    .overlay(Button {
-                        print("call")
-                    } label: {
-                        Image(systemName: "phone")
-                    }
-                        .position(x: 270, y: 97)
-                    )
-                TextFieldView(textInTF: $name, placeHolder: "Contact's name", name: "Name")
-                TextFieldView(textInTF: $secondName, placeHolder: "Contact's last name", name: "Last name")
-                Spacer()
-            }
-            .frame(
-                width: UIScreen.main.bounds.width,
-                height: UIScreen.main.bounds.height - 200
-            )
-            .toolbar {
-                Button {
-                    saveContact()
-                } label: {
-                    Text("Save").bold()
+        ZStack {
+            ScrollView {
+                VStack {
+                    ImageButton(data: $photo,uiimage: UIImage(data: photo ?? Data()), contact: contact)
+                        .padding(.top, 40)
+                    TextFieldView(textInTF: $number, placeHolder: "Phone numberr", name: "Phone")
+                        .padding(.top, 80)
+                        .overlay(Button {
+                            let callPhone = "tel://"
+                            let formatedCall = callPhone + number
+                            guard let url = URL(string: formatedCall) else { return }
+                            UIApplication.shared.open(url)
+                        } label: {
+                            Image(systemName: "phone")
+                        }
+                            .position(x: 270, y: 97)
+                        )
+                    TextFieldView(textInTF: $name, placeHolder: "Contact's name", name: "Name")
+                    TextFieldView(textInTF: $secondName, placeHolder: "Contact's last name", name: "Last name")
+                    Spacer()
                 }
+                .frame(
+                    width: UIScreen.main.bounds.width,
+                    height: UIScreen.main.bounds.height - 200
+                )
+                .toolbar {
+                    Button {
+                        saveContact()
+                    } label: {
+                        Text("Save").bold()
+                    }
+                }
+                .navigationTitle(barTitle)
             }
-            .navigationTitle(barTitle)
         }
+        
     }
-    
     private func saveContact() {
         contact.name = name
         contact.secondName = secondName

@@ -42,15 +42,17 @@ struct ImageButton: View {
             self.focusedImaagePicker = true
         } label: {
             ZStack {
-            Circle()
-                .foregroundColor(.gray)
-                .frame(width: 200, height: 200)
+                Circle()
+                    .frame(width: 175, height: 175)
+                    .foregroundColor(.gray)
+                    .opacity(0.7)
+                    .addShadow()
                 if let data = data {
                     Image(uiImage: UIImage(data: data)!)
                         .resizable()
-                        .frame(width: 200, height: 200)
-                        .cornerRadius(100)
-                        .scaledToFit()
+                        .frame(width: 175, height: 175)
+                        .cornerRadius(87)
+                        .aspectRatio(0.6, contentMode: .fit)
                 } else {
                     Image(systemName: "questionmark")
                         .resizable()

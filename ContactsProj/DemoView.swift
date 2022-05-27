@@ -10,7 +10,6 @@ import SwiftUI
 struct DemoView: View {
     
     var body: some View {
-        
         TabView {
             ContactsDemo()
                 .tabItem {
@@ -21,6 +20,9 @@ struct DemoView: View {
                 .tabItem {
                     Image(systemName: "person")
                     Text("Profile")
+                }
+                .onAppear {
+                    UITabBar.appearance().tintColor = UIColor.gray
                 }
         }
     }

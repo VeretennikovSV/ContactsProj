@@ -23,7 +23,7 @@ struct ContactsDemo: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(contacts) { cont in
+                ForEach(contacts, id: \.self) { cont in
                     Section(cont.secondName) {
                         NavigationLink {
                             InfoAboutContact(

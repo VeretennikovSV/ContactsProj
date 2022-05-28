@@ -152,7 +152,6 @@ struct Buttons: View {
     
     private func newContactWith(_ name: String, _ secondName: String, _ number: String) {
         withAnimation {
-            
             if name.isEmpty || secondName.isEmpty || number.isEmpty {
                 isAlertPresented.toggle()
                 return

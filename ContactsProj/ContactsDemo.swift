@@ -38,7 +38,7 @@ struct ContactsDemo: View {
                             CellInTable(name: cont.name, secondName: cont.number)
                         }
                     }
-                    .font(.system(size: 20))
+                    .font(.system(size: 13))
                 }
                 .onDelete { indexSet in
                     deleteContact(offset: indexSet)
@@ -52,7 +52,20 @@ struct ContactsDemo: View {
                     } label: {
                         Image(systemName: "plus")
                     }
-                    EditButton()
+                    Button {
+                        NetworkManager.shared.fetchRequestWith(url: "https://randomuser.me/api/") { result in
+                            switch result {
+                            case .success(let contact):
+                                print(contact.results)
+                            case .failure(let error):
+                                print("Жопа")
+                            }
+                        }
+                    } label: {
+                        Image(systemName: "checkmark")
+                    }
+
+//                    EditButton()
                 }
             }
             .sheet(isPresented: $isSheetPresented) {

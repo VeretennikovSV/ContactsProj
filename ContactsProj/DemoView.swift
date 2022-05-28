@@ -21,9 +21,6 @@ struct DemoView: View {
                     Image(systemName: "person")
                     Text("Profile")
                 }
-                .onAppear {
-                    UITabBar.appearance().tintColor = UIColor.gray
-                }
         }
     }
 }

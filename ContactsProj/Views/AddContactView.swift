@@ -22,7 +22,8 @@ struct AddContactView: View {
     
     @State private var name = ""
     @State private var secondName = ""
-    @State private var phone = ""
+    @State private var number = ""
+    @State private var photo: Data? = nil
     @State private var isAlertPresented = false
     
     @FocusState private var focusedField: Field?
@@ -32,6 +33,9 @@ struct AddContactView: View {
         ZStack {
             Color.white
             VStack {
+                Button(action: randomContact ) {
+                    Text("Add random user from api?").bold()
+                }
                 ZStack {
                     Rectangle()
                         .cornerRadius(10)
@@ -39,7 +43,7 @@ struct AddContactView: View {
                         .frame(width: 300, height: 150)
                         .addShadow()
                     VStack {
-                        TextFieldView(textInTF: $phone, placeHolder: "Contact number", name: "Number")
+                        TextFieldView(textInTF: $number, placeHolder: "Contact number", name: "Number")
                             .focused($focusedField, equals: .phone)
                             .submitLabel(.next)
                             .simultaneousGesture(TapGesture().onEnded {
@@ -62,9 +66,10 @@ struct AddContactView: View {
                 Buttons(
                     name: $name,
                     secondName: $secondName,
-                    number: $phone,
+                    number: $number,
                     isPresented: $isPresented,
-                    isAlertPresented: $isAlertPresented
+                    isAlertPresented: $isAlertPresented,
+                    photo: $photo
                 )
             }
         }
@@ -76,7 +81,7 @@ struct AddContactView: View {
             case .name:
                 focusedField = .secondName
             case .secondName:
-                newContactWith(name, secondName, phone)
+                newContactWith(name, secondName, number, photo)
             default: break
             }
         }
@@ -85,7 +90,22 @@ struct AddContactView: View {
         }
     }
     
-    private func newContactWith(_ name: String, _ secondName: String, _ number: String) {
+    private func randomContact() {
+        NetworkManager.shared.fetchRequestWith(url: "https://randomuser.me/api/") { result in
+            switch result {
+            case .success(let contact):
+                    name = contact.0.results.first?.name.first ?? ""
+                    secondName = contact.0.results.first?.name.last ?? ""
+                    number = contact.0.results.first?.phone ?? ""
+                    photo = contact.1
+                    focusedField = .secondName
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    private func newContactWith(_ name: String, _ secondName: String, _ number: String, _ photo: Data?) {
         withAnimation {
             
             if name.isEmpty || secondName.isEmpty || number.isEmpty {
@@ -97,6 +117,7 @@ struct AddContactView: View {
             newContact.name = name
             newContact.secondName = secondName
             newContact.number = number
+            newContact.picture = photo
             newContact.id = UUID()
             
             do {
@@ -126,10 +147,12 @@ struct Buttons: View {
     @Binding var number: String
     @Binding var isPresented: Bool
     @Binding var isAlertPresented: Bool
+    @Binding var photo: Data?
     
     var body: some View {
         HStack {
             Button {
+                photo = nil
                 isPresented.toggle()
             } label: {
                 Text("Cancel")
@@ -141,7 +164,7 @@ struct Buttons: View {
             Spacer()
             
             Button {
-                newContactWith(name, secondName, number)
+                newContactWith(name, secondName, number, photo)
             } label: {
                 Text("Add contact").bold()
                     .frame(width: 100, alignment: .trailing)
@@ -150,7 +173,7 @@ struct Buttons: View {
         }
     }
     
-    private func newContactWith(_ name: String, _ secondName: String, _ number: String) {
+    private func newContactWith(_ name: String, _ secondName: String, _ number: String, _ photo: Data?) {
         withAnimation {
             if name.isEmpty || secondName.isEmpty || number.isEmpty {
                 isAlertPresented.toggle()
@@ -161,6 +184,7 @@ struct Buttons: View {
             newContact.name = name
             newContact.secondName = secondName
             newContact.number = number
+            newContact.picture = photo
             newContact.id = UUID()
             
             do {
@@ -172,3 +196,4 @@ struct Buttons: View {
         }
     }
 }
+

@@ -18,7 +18,7 @@ class NetworkManager {
     static var shared = NetworkManager()
     private init(){}
     
-    func fetchRequestWith(url: String, completion: @escaping(Result<ContactInfo, FetchError>) -> Void) {
+    func fetchRequestWith(url: String, completion: @escaping(Result<(ContactInfo, Data?), FetchError>) -> Void) {
         
         guard let url = URL(string: url) else { completion(.failure(.noUrl)); return}
         
@@ -31,16 +31,33 @@ class NetworkManager {
             do {
                 let decoder = JSONDecoder()
                 let dateFormater = DateFormatter()
-                dateFormater.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
+                dateFormater.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
                 decoder.dateDecodingStrategy = .formatted(dateFormater)
                 let type = try decoder.decode(ContactInfo.self, from: data)
-                DispatchQueue.main.async {
-                    completion(.success(type))
+                DispatchQueue.main.async { [self] in
+                    let data = downloadImage(from: type.results.first?.picture.large)
+                    completion(.success((type, data)))
                 }
             } catch {
                 completion(.failure(.cantDecode))
             }
             
         }.resume()
+    }
+    
+    func downloadImage(from url: String?) -> Data? {
+        
+        var outData: Data?
+        
+        guard let url = URL(string: url ?? "") else { return nil }
+        
+        do {
+            let data = try? Data(contentsOf: url)
+            outData = data
+        } catch {
+            print("suck")
+        }
+        
+        return outData
     }
 }

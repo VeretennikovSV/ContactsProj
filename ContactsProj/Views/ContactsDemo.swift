@@ -41,7 +41,9 @@ struct ContactsDemo: View {
                     .font(.system(size: 13))
                 }
                 .onDelete { indexSet in
-                    deleteContact(offset: indexSet)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                        deleteContact(offset: indexSet)
+                    }
                 }
             }
             .navigationTitle("My contacts")
@@ -52,20 +54,7 @@ struct ContactsDemo: View {
                     } label: {
                         Image(systemName: "plus")
                     }
-                    Button {
-                        NetworkManager.shared.fetchRequestWith(url: "https://randomuser.me/api/") { result in
-                            switch result {
-                            case .success(let contact):
-                                print(contact.results)
-                            case .failure(let error):
-                                print("Жопа")
-                            }
-                        }
-                    } label: {
-                        Image(systemName: "checkmark")
-                    }
-
-//                    EditButton()
+                    EditButton()
                 }
             }
             .sheet(isPresented: $isSheetPresented) {
@@ -95,6 +84,5 @@ struct ContactsDemo: View {
 struct ContactsDemo_Previews: PreviewProvider {
     static var previews: some View {
         ContactsDemo()
-            .environmentObject(Contacts())
     }
 }

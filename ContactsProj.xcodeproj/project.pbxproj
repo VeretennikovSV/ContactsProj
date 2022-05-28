@@ -14,11 +14,7 @@
 		09068E28283BF3E8004786BD /* ContactListApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09068E1C283BF3E7004786BD /* ContactListApp.swift */; };
 		09068E2A283BF3E8004786BD /* ContactsDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09068E1E283BF3E7004786BD /* ContactsDemo.swift */; };
 		09068E2B283BF3E8004786BD /* DemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09068E1F283BF3E7004786BD /* DemoView.swift */; };
-		09068E2C283BF3E8004786BD /* DataManagerForDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09068E20283BF3E7004786BD /* DataManagerForDemo.swift */; };
 		09068E2D283BF3E8004786BD /* MyProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09068E21283BF3E7004786BD /* MyProfile.swift */; };
-		09068E2E283BF3E8004786BD /* StarterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09068E22283BF3E7004786BD /* StarterView.swift */; };
-		09068E2F283BF3E8004786BD /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09068E23283BF3E8004786BD /* Test.swift */; };
-		09068E30283BF3E8004786BD /* ContactsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09068E24283BF3E8004786BD /* ContactsManager.swift */; };
 		09068E31283BF3E8004786BD /* Modifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09068E25283BF3E8004786BD /* Modifiers.swift */; };
 		09068E32283BF3E8004786BD /* InfoAboutContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09068E26283BF3E8004786BD /* InfoAboutContact.swift */; };
 		09068E33283BF3E8004786BD /* CellInTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09068E27283BF3E8004786BD /* CellInTable.swift */; };
@@ -41,11 +37,7 @@
 		09068E1C283BF3E7004786BD /* ContactListApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactListApp.swift; sourceTree = "<group>"; };
 		09068E1E283BF3E7004786BD /* ContactsDemo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsDemo.swift; sourceTree = "<group>"; };
 		09068E1F283BF3E7004786BD /* DemoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoView.swift; sourceTree = "<group>"; };
-		09068E20283BF3E7004786BD /* DataManagerForDemo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManagerForDemo.swift; sourceTree = "<group>"; };
 		09068E21283BF3E7004786BD /* MyProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyProfile.swift; sourceTree = "<group>"; };
-		09068E22283BF3E7004786BD /* StarterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarterView.swift; sourceTree = "<group>"; };
-		09068E23283BF3E8004786BD /* Test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
-		09068E24283BF3E8004786BD /* ContactsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsManager.swift; sourceTree = "<group>"; };
 		09068E25283BF3E8004786BD /* Modifiers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Modifiers.swift; sourceTree = "<group>"; };
 		09068E26283BF3E8004786BD /* InfoAboutContact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoAboutContact.swift; sourceTree = "<group>"; };
 		09068E27283BF3E8004786BD /* CellInTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellInTable.swift; sourceTree = "<group>"; };
@@ -91,25 +83,10 @@
 		09068E08283BF2AC004786BD /* ContactsProj */ = {
 			isa = PBXGroup;
 			children = (
-				09068E1C283BF3E7004786BD /* ContactListApp.swift */,
-				09068E27283BF3E8004786BD /* CellInTable.swift */,
-				09068E1E283BF3E7004786BD /* ContactsDemo.swift */,
-				099C31C52842677A00982881 /* Networking.swift */,
-				099C31C728426D6500982881 /* ModelsForFetch.swift */,
-				09068E26283BF3E8004786BD /* InfoAboutContact.swift */,
-				09BFE61F283FFED500F79524 /* ImageButton.swift */,
-				09BFE619283FDE8400F79524 /* ImagePicker.swift */,
-				09DBA58F283CFE6B00AA8255 /* AddContactView.swift */,
-				09DBA591283CFF3300AA8255 /* TextFieldView.swift */,
-				09068E24283BF3E8004786BD /* ContactsManager.swift */,
-				09068E20283BF3E7004786BD /* DataManagerForDemo.swift */,
-				09068E1F283BF3E7004786BD /* DemoView.swift */,
-				09068E25283BF3E8004786BD /* Modifiers.swift */,
-				09068E21283BF3E7004786BD /* MyProfile.swift */,
-				09068E22283BF3E7004786BD /* StarterView.swift */,
-				09068E23283BF3E8004786BD /* Test.swift */,
+				099C31CD2842AE0B00982881 /* Others */,
+				099C31CB2842AD6900982881 /* Views */,
+				099C31CC2842ADB900982881 /* Managers */,
 				09068E0D283BF2AE004786BD /* Assets.xcassets */,
-				09068E12283BF2AE004786BD /* Persistence.swift */,
 				09068E14283BF2AE004786BD /* ContactsProj.xcdatamodeld */,
 				09068E0F283BF2AE004786BD /* Preview Content */,
 			);
@@ -122,6 +99,41 @@
 				09068E10283BF2AE004786BD /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		099C31CB2842AD6900982881 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				09068E26283BF3E8004786BD /* InfoAboutContact.swift */,
+				09068E21283BF3E7004786BD /* MyProfile.swift */,
+				09068E1F283BF3E7004786BD /* DemoView.swift */,
+				09DBA591283CFF3300AA8255 /* TextFieldView.swift */,
+				09DBA58F283CFE6B00AA8255 /* AddContactView.swift */,
+				09068E1E283BF3E7004786BD /* ContactsDemo.swift */,
+				09BFE61F283FFED500F79524 /* ImageButton.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		099C31CC2842ADB900982881 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				099C31C728426D6500982881 /* ModelsForFetch.swift */,
+				09068E25283BF3E8004786BD /* Modifiers.swift */,
+				09BFE619283FDE8400F79524 /* ImagePicker.swift */,
+				099C31C52842677A00982881 /* Networking.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		099C31CD2842AE0B00982881 /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				09068E12283BF2AE004786BD /* Persistence.swift */,
+				09068E1C283BF3E7004786BD /* ContactListApp.swift */,
+				09068E27283BF3E8004786BD /* CellInTable.swift */,
+			);
+			path = Others;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -203,18 +215,14 @@
 				099C31C828426D6500982881 /* ModelsForFetch.swift in Sources */,
 				09DBA592283CFF3300AA8255 /* TextFieldView.swift in Sources */,
 				09BFE62828400AF800F79524 /* Contact+CoreDataProperties.swift in Sources */,
-				09068E2F283BF3E8004786BD /* Test.swift in Sources */,
 				09068E16283BF2AE004786BD /* ContactsProj.xcdatamodeld in Sources */,
 				09BFE620283FFED500F79524 /* ImageButton.swift in Sources */,
 				099C31C62842677A00982881 /* Networking.swift in Sources */,
-				09068E2E283BF3E8004786BD /* StarterView.swift in Sources */,
 				09BFE61A283FDE8400F79524 /* ImagePicker.swift in Sources */,
 				09BFE62728400AF800F79524 /* Contact+CoreDataClass.swift in Sources */,
 				09068E28283BF3E8004786BD /* ContactListApp.swift in Sources */,
 				09068E33283BF3E8004786BD /* CellInTable.swift in Sources */,
 				09068E2A283BF3E8004786BD /* ContactsDemo.swift in Sources */,
-				09068E30283BF3E8004786BD /* ContactsManager.swift in Sources */,
-				09068E2C283BF3E8004786BD /* DataManagerForDemo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,8 +14,6 @@ struct ContactListApp: App {
     @Environment(\.managedObjectContext) var context
     let persistenceController = PersistenceController.shared
     
-    @StateObject var contacts = Contacts()
-    
     var body: some Scene {
         WindowGroup {
             DemoView()

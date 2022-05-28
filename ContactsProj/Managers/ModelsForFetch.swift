@@ -15,7 +15,7 @@ struct RandomContact: Codable {
     
     
     let name: Name
-    
+    let dob: Dob
     let email: String
     
     let phone: String

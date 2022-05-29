@@ -9,8 +9,16 @@ import SwiftUI
 
 struct Profile: View {
     var body: some View {
-        VStack {
-            
+        VStack(spacing: 40) {
+            Image("Me")
+                .resizable()
+                .frame(width: 300, height: 428)
+                .cornerRadius(30)
+                .padding(.top, 30)
+                .addShadow()
+            Text("Тестовый проект начинающего разраба приложений под IOS, Веретенникова Сергея Вячеславовича. \n\nP.S. Сверху моя морда \n P.S.S При разработке ни одна нервная клетка не пострадала")
+                .frame(width: 300)
+                .multilineTextAlignment(.center)
         }
     }
 }

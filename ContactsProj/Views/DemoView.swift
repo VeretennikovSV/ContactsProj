@@ -13,12 +13,12 @@ struct DemoView: View {
         TabView {
             ContactsDemo()
                 .tabItem {
-                    Image(systemName: "checkmark")
+                    Image(systemName: "person.3")
                     Text("Contacts")
                 }
             Profile()
                 .tabItem {
-                    Image(systemName: "person")
+                    Image(systemName: "person.crop.circle")
                     Text("Profile")
                 }
         }

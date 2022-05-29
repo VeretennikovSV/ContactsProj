@@ -54,8 +54,6 @@ class NetworkManager {
         do {
             let data = try? Data(contentsOf: url)
             outData = data
-        } catch {
-            print("suck")
         }
         
         return outData

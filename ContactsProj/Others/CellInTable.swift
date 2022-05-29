@@ -10,17 +10,17 @@ import SwiftUI
 struct CellInTable: View {
     
     let name: String
-    let secondName: String
+    let number: String
     
     var body: some View {
         HStack {
             Text(name)
                 .bold()
-                .font(.system(size: 20))
+                .font(.system(size: 16))
                 .frame(width: 120, alignment: .leading)
-            Text(secondName)
+            Text(number)
                 .frame(alignment: .trailing)
-                .font(.system(size: 20))
+                .font(.system(size: 16))
                 .padding(.leading, 16)
         }
     }
@@ -28,6 +28,6 @@ struct CellInTable: View {
 
 struct CellInTable_Previews: PreviewProvider {
     static var previews: some View {
-        CellInTable(name: "123", secondName: "123")
+        CellInTable(name: "123", number: "123")
     }
 }

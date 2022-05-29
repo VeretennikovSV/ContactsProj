@@ -12,6 +12,8 @@ struct ContactsDemo: View {
     
     @Environment(\.managedObjectContext) private var context
     @State private var isSheetPresented = false
+    @State private var isDeleteAlertPresented = false
+    @State private var index = 0
     
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Contact.name, ascending: true)],
@@ -23,7 +25,8 @@ struct ContactsDemo: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(contacts, id: \.self) { cont in
+                ForEach(contacts.indices, id: \.self) { index in
+                    let cont = contacts[index]
                     Section(cont.secondName) {
                         NavigationLink {
                             InfoAboutContact(
@@ -35,26 +38,23 @@ struct ContactsDemo: View {
                                 contact: cont
                             )
                         } label: {
-                            CellInTable(name: cont.name, secondName: cont.number)
+                            CellInTable(name: cont.name, number: cont.number)
                         }
+                        .swipeActions(indexx: self.$index, callContact: callContact, index: index, isDeleteAlertPresented: $isDeleteAlertPresented)
                     }
                     .font(.system(size: 13))
                 }
-                .onDelete { indexSet in
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                        deleteContact(offset: indexSet)
-                    }
-                }
             }
+            .alert("Do you want to delete contact?", isPresented: $isDeleteAlertPresented, actions: {
+                DeleteAlertButtons(action: deleteContact, index: self.index, isDeleteAlertPresented: $isDeleteAlertPresented)
+            })
+            
             .navigationTitle("My contacts")
             .toolbar {
-                HStack {
-                    Button {
-                        addContact()
-                    } label: {
-                        Image(systemName: "plus")
-                    }
-                    EditButton()
+                Button {
+                    addContact()
+                } label: {
+                    Image(systemName: "plus")
                 }
             }
             .sheet(isPresented: $isSheetPresented) {
@@ -63,15 +63,23 @@ struct ContactsDemo: View {
         }
     }
     
+    private func callContact(offset: Int) {
+        withAnimation(.easeOut) {
+            let number = contacts[offset].number
+            let callPhone = "tel://"
+            let formatedCall = callPhone + number
+            guard let url = URL(string: formatedCall) else { return }
+            UIApplication.shared.open(url)
+        }
+    }
+    
     private func addContact() {
         isSheetPresented.toggle()
     }
     
-    private func deleteContact(offset: IndexSet) {
+    private func deleteContact(offset: Int) {
         withAnimation {
-            for index in offset {
-                context.delete(contacts[index])
-            }
+            context.delete(contacts[offset])
             do {
                 try context.save()
             } catch {
@@ -84,5 +92,30 @@ struct ContactsDemo: View {
 struct ContactsDemo_Previews: PreviewProvider {
     static var previews: some View {
         ContactsDemo()
+    }
+}
+
+
+
+struct DeleteAlertButtons: View {
+    
+    let action: (Int) -> Void
+    let index: Int
+    @Binding var isDeleteAlertPresented: Bool
+    
+    var body: some View {
+        ZStack {
+            Button(action: {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                    action(index)
+                }
+            }) {
+                Text("Delete")
+            }
+            
+            Button(action: { isDeleteAlertPresented.toggle() }) {
+                Text("Cancel")
+            }
+        }
     }
 }

@@ -14,6 +14,22 @@ struct ContactsDemo: View {
     @State private var isSheetPresented = false
     @State private var isDeleteAlertPresented = false
     @State private var index = 0
+    @State private var sortingContacts = ""
+    
+    var search: Binding<String> {
+        Binding {
+            sortingContacts
+        } set: { newVaalue in
+            sortingContacts = newVaalue
+            
+            guard !newVaalue.isEmpty else {
+                contacts.nsPredicate = nil
+                return
+            }
+            
+            contacts.nsPredicate = NSPredicate(format: "name contains[cd] %@", newVaalue)
+        }
+    }
     
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Contact.name, ascending: true)],
@@ -45,6 +61,7 @@ struct ContactsDemo: View {
                     .font(.system(size: 13))
                 }
             }
+            .searchable(text: search)
             .alert("Do you want to delete contact?", isPresented: $isDeleteAlertPresented, actions: {
                 DeleteAlertButtons(action: deleteContact, index: self.index, isDeleteAlertPresented: $isDeleteAlertPresented)
             })

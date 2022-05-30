@@ -43,7 +43,7 @@ struct ContactsDemo: View {
             List {
                 ForEach(contacts.indices, id: \.self) { index in
                     let cont = contacts[index]
-                    Section(cont.secondName) {
+                    Section(cont.name) {
                         NavigationLink {
                             InfoAboutContact(
                                 name: cont.name,
@@ -54,7 +54,7 @@ struct ContactsDemo: View {
                                 contact: cont
                             )
                         } label: {
-                            CellInTable(name: cont.name, number: cont.number)
+                            CellInTable(name: cont.secondName, number: cont.number)
                         }
                         .swipeActions(indexx: self.$index, callContact: callContact, index: index, isDeleteAlertPresented: $isDeleteAlertPresented)
                     }

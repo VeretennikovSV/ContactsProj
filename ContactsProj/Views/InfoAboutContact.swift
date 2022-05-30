@@ -12,6 +12,7 @@ struct InfoAboutContact: View {
     @Environment(\.dismiss) var presentationMode
     @Environment(\.managedObjectContext) var context
     
+    
     @State private var name = ""
     @State private var secondName = ""
     @State private var number = ""
@@ -33,14 +34,7 @@ struct InfoAboutContact: View {
                             focusedField = .phone
                         })
                         .padding(.top, 80)
-                        .overlay(Button {
-                            let callPhone = "tel://"
-                            let formatedCall = callPhone + number
-                            guard let url = URL(string: formatedCall) else { return }
-                            UIApplication.shared.open(url)
-                        } label: {
-                            Image(systemName: "phone")
-                        }
+                        .overlay(CallButton(number: number)
                             .position(x: 270, y: 97)
                         )
                     TextFieldView(textInTF: $name, placeHolder: "Contact's name", name: "Name")

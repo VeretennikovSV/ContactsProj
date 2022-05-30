@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09065F902845432E00B89A72 /* CallButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09065F8F2845432E00B89A72 /* CallButton.swift */; };
 		09068E0E283BF2AE004786BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09068E0D283BF2AE004786BD /* Assets.xcassets */; };
 		09068E11283BF2AE004786BD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09068E10283BF2AE004786BD /* Preview Assets.xcassets */; };
 		09068E13283BF2AE004786BD /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09068E12283BF2AE004786BD /* Persistence.swift */; };
@@ -29,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		09065F8F2845432E00B89A72 /* CallButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallButton.swift; sourceTree = "<group>"; };
 		09068E06283BF2AC004786BD /* ContactsProj.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ContactsProj.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09068E0D283BF2AE004786BD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		09068E10283BF2AE004786BD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				09068E26283BF3E8004786BD /* InfoAboutContact.swift */,
+				09065F8F2845432E00B89A72 /* CallButton.swift */,
 				09068E21283BF3E7004786BD /* MyProfile.swift */,
 				09068E1F283BF3E7004786BD /* DemoView.swift */,
 				09DBA591283CFF3300AA8255 /* TextFieldView.swift */,
@@ -221,6 +224,7 @@
 				09BFE61A283FDE8400F79524 /* ImagePicker.swift in Sources */,
 				09BFE62728400AF800F79524 /* Contact+CoreDataClass.swift in Sources */,
 				09068E28283BF3E8004786BD /* ContactListApp.swift in Sources */,
+				09065F902845432E00B89A72 /* CallButton.swift in Sources */,
 				09068E33283BF3E8004786BD /* CellInTable.swift in Sources */,
 				09068E2A283BF3E8004786BD /* ContactsDemo.swift in Sources */,
 			);

@@ -58,7 +58,7 @@ struct SwipeActions: ViewModifier {
 
 extension View {
     
-    func swipeActions(indexx: Binding<Int>, callContact: @escaping (Int) -> Void, index: Int, isDeleteAlertPresented: Binding<Bool> ) -> some View {
+    func callDeleteSwipes(indexx: Binding<Int>, callContact: @escaping (Int) -> Void, index: Int, isDeleteAlertPresented: Binding<Bool> ) -> some View {
         modifier(SwipeActions(indexx: indexx, callContact: callContact, index: index, isDeleteAlertPresented: isDeleteAlertPresented))
     }
     

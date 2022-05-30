@@ -11,6 +11,7 @@ import CoreData
 struct ContactsDemo: View {
     
     @Environment(\.managedObjectContext) private var context
+    
     @State private var isSheetPresented = false
     @State private var isDeleteAlertPresented = false
     @State private var index = 0
@@ -45,13 +46,11 @@ struct ContactsDemo: View {
                     let cont = contacts[index]
                     Section(cont.name) {
                         NavigationLink {
-                            InfoAboutContact(
-                                contact: cont
-                            )
+                            InfoAboutContact(contact: cont)
                         } label: {
                             CellInTable(name: cont.secondName, number: cont.number)
                         }
-                        .swipeActions(indexx: self.$index, callContact: callContact, index: index, isDeleteAlertPresented: $isDeleteAlertPresented)
+                        .callDeleteSwipes(indexx: self.$index, callContact: callContact, index: index, isDeleteAlertPresented: $isDeleteAlertPresented)
                     }
                     .font(.system(size: 13))
                 }

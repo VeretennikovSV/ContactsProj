@@ -19,15 +19,15 @@ struct ContactsDemo: View {
     var search: Binding<String> {
         Binding {
             sortingContacts
-        } set: { newVaalue in
-            sortingContacts = newVaalue
+        } set: { newValue in
+            sortingContacts = newValue
             
-            guard !newVaalue.isEmpty else {
+            guard !newValue.isEmpty else {
                 contacts.nsPredicate = nil
                 return
             }
             
-            contacts.nsPredicate = NSPredicate(format: "name contains[cd] %@", newVaalue)
+            contacts.nsPredicate = NSPredicate(format: "name contains[cd] %@", newValue)
         }
     }
     

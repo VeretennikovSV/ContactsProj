@@ -46,11 +46,6 @@ struct ContactsDemo: View {
                     Section(cont.name) {
                         NavigationLink {
                             InfoAboutContact(
-                                name: cont.name,
-                                secondName: cont.secondName,
-                                number: cont.number,
-                                photo: cont.picture,
-                                barTitle: "\(cont.name) \(cont.secondName)",
                                 contact: cont
                             )
                         } label: {
@@ -65,7 +60,6 @@ struct ContactsDemo: View {
             .alert("Do you want to delete contact?", isPresented: $isDeleteAlertPresented, actions: {
                 DeleteAlertButtons(action: deleteContact, index: self.index, isDeleteAlertPresented: $isDeleteAlertPresented)
             })
-            
             .navigationTitle("My contacts")
             .toolbar {
                 Button {

@@ -9,14 +9,15 @@ import SwiftUI
 
 struct InfoAboutContact: View {
     
+    @Environment(\.dismiss) var presentationMode
     @Environment(\.managedObjectContext) var context
     
-    @State var name = ""
-    @State var secondName = ""
-    @State var number = ""
-    @State var photo: Data?
-    var barTitle: String
-    var contact: Contact
+    @State private var name = ""
+    @State private var secondName = ""
+    @State private var number = ""
+    @State private var photo: Data?
+    @State private var barTitle = ""
+    let contact: Contact
     
     @FocusState private var focusedField: Field?
     
@@ -61,12 +62,25 @@ struct InfoAboutContact: View {
                 .toolbar {
                     Button {
                         saveContact()
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                            focusedField = nil
+                        }
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                            presentationMode()
+                        }
                     } label: {
                         Text("Save").bold()
                     }
                 }
                 .navigationTitle(barTitle)
             }
+        }
+        .onAppear {
+            name = contact.name
+            barTitle = contact.name
+            secondName = contact.secondName
+            number = contact.number
+            photo = contact.picture
         }
         .onTapGesture {
             focusedField = nil
@@ -80,6 +94,7 @@ struct InfoAboutContact: View {
         
         do {
             try context.save()
+            barTitle = name
         } catch {
             print(error.localizedDescription)
         }
@@ -88,7 +103,7 @@ struct InfoAboutContact: View {
 
 struct InfoAboutContact_Previews: PreviewProvider {
     static var previews: some View {
-        InfoAboutContact(name: "Sergey", secondName: "Veretennikov", number: "+79313624497", barTitle: "Sergey", contact: Contact())
+        InfoAboutContact(contact: Contact())
     }
 }
 
